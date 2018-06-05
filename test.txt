@@ -1,0 +1,14 @@
+sample
+{
+  "address": "flower",
+  "city": "thane",
+  "eligibleRate": 80,
+  "name": "ganesh",
+  "pan": "abcde1234q",
+  "pincode": "400601",
+  "state": "MH",
+  "status": "some",
+  "vendorCode": "VCODE1",
+  "vendorName": "VNAME99"
+}
+
