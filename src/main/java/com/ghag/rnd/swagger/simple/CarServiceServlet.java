@@ -10,6 +10,10 @@ import org.springframework.context.annotation.Bean;
 
 //@Configuration
 //public class CarServiceServlet extends SpringBootServletInitializer {
+
+//this class has been deprecated because it replaces the spring dispatcher 
+//servlet causing more issues than it solves
+@Deprecated
 public class CarServiceServlet {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(CarServiceServlet.class);
