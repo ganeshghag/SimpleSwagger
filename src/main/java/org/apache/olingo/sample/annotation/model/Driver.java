@@ -21,6 +21,7 @@ package org.apache.olingo.sample.annotation.model;
 import java.util.Calendar;
 import org.apache.olingo.odata2.api.annotation.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
+import org.apache.olingo.odata2.api.annotation.edm.EdmFacets;
 import org.apache.olingo.odata2.api.annotation.edm.EdmKey;
 import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
@@ -34,7 +35,7 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmType;
 public class Driver {
 
   @EdmKey
-  @EdmProperty
+  @EdmProperty(facets = @EdmFacets(nullable=false))
   private Long id;
   
   @EdmProperty

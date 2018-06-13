@@ -18,16 +18,21 @@
  ******************************************************************************/
 package org.apache.olingo.sample.annotation.util;
 
-import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
+
+import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
+import org.apache.olingo.sample.annotation.model.Certificate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Data generator for annotation sample service.
@@ -45,7 +50,7 @@ public class AnnotationSampleDataGenerator {
   private static final boolean PRINT_RAW_CONTENT = true;
 
   public static void main(String[] args) {
-    String serviceUrl = "http://localhost:8080/MyFormula.svc";
+    String serviceUrl = "http://10.26.32.96:8080/MyFormula.svc";
     if(args.length == 1) {
       serviceUrl = args[0];
     }
@@ -69,6 +74,18 @@ public class AnnotationSampleDataGenerator {
     String manufacturersUri = serviceUrl + "/Manufacturers";
     createEntity(manufacturersUri, manufacturerStar, usedFormat);
     createEntity(manufacturersUri, manufacturerHorse, usedFormat);
+    
+    
+    Gson gson = new Gson();
+    Type type = new TypeToken<Certificate>() {}.getType();
+    String certificate1 = gson.toJson(getCertificate("1"), type);
+    String certificate2 = gson.toJson(getCertificate("2"), type);
+    String certificate3 = gson.toJson(getCertificate("3"), type);
+    
+    createEntity(serviceUrl + "/Certificates",certificate1,usedFormat);
+    createEntity(serviceUrl + "/Certificates",certificate2,usedFormat);
+    createEntity(serviceUrl + "/Certificates",certificate3,usedFormat);
+   
 
     String carOneWithInlineDriverOne =
             "{\"Id\":\"1\",\"Model\":\"F1 W02\",\"Price\":\"167189.0\",\"ModelYear\":2011,\"Updated\":\"/Date(1392989833964)/\"," +
@@ -176,4 +193,32 @@ public class AnnotationSampleDataGenerator {
     stream.close();
     return result;
   }
+  
+  private Certificate getCertificate(String key) {
+	  
+	  Certificate cert = new Certificate();
+	  cert.setCertificateUri("URI"+key);
+	  cert.setCertificateNumber("CERTNUM-"+key);
+	  cert.setCompanyCode("CMP-CODE-"+key);
+	  cert.setCreatedBy("AUTH-"+key);
+	  //cert.setCreatedOn(new Date());
+	  cert.setDoneeId("DONEE-"+key);
+	  //cert.setEndDate(new Date());
+	  cert.setFinancialYear("2018-19");
+	  cert.setIsActive("true");
+	  cert.setPerpetuityFlag("true");
+	  cert.setServerName("SERVER-"+key);
+	  //cert.setStartDate(new Date());
+	  cert.setUpdatedBy("UPD-"+key);
+	  //cert.setUpdatedOn(new Date());
+	  cert.setValdiatedOnDeptWebsite("true");
+	  cert.setVendorCode("VENDOR-"+key);
+	  
+	  
+	  
+	  
+	  return cert;
+  }
+  
+  
 }
