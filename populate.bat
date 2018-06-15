@@ -1,1 +1,2 @@
-java -cp %1 org.apache.olingo.sample.annotation.util.AnnotationSampleDataGenerator
+SET MAVEN_REPO=C:\Users\Ganesh1.Ghag\.m2\repository
+java -cp ".\target\SimpleSwagger-0.0.1-SNAPSHOT.jar;%MAVEN_REPO%\org\slf4j\slf4j-api\1.7.1\slf4j-api-1.7.1.jar" org.apache.olingo.sample.annotation.util.AnnotationSampleDataGenerator

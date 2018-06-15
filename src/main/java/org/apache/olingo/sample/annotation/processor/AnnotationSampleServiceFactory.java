@@ -67,6 +67,12 @@ public class AnnotationSampleServiceFactory extends ODataServiceFactory {
   @SuppressWarnings("unchecked")
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
+	  
+	  System.out.println("from odatacallback with");
+	  System.out.println("T is "+callbackInterface.getCanonicalName());
+	  System.out.println("T is "+callbackInterface.getSimpleName());
+	  System.out.println("T is "+callbackInterface.getTypeName());
+	  
     return (T) (callbackInterface.isAssignableFrom(ScenarioErrorCallback.class)
             ? new ScenarioErrorCallback() : callbackInterface.isAssignableFrom(ODataDebugCallback.class)
             ? new ScenarioDebugCallback() : super.getCallback(callbackInterface));
