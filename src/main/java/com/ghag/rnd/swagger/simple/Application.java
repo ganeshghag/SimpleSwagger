@@ -29,7 +29,8 @@ public class Application {
 	    bean.setLoadOnStartup(1);
 	    Map<String, String> params = new HashMap<String, String>();
 		params.put("javax.ws.rs.Application", "org.apache.olingo.odata2.core.rest.app.ODataApplication");
-		params.put("org.apache.olingo.odata2.service.factory", "org.apache.olingo.sample.annotation.processor.AnnotationSampleServiceFactory");
+	    params.put("org.apache.olingo.odata2.service.factory", "org.apache.olingo.sample.annotation.processor.MyODataJPAServiceFactory");
+	    //params.put("org.apache.olingo.odata2.service.factory", "org.apache.olingo.sample.annotation.processor.AnnotationSampleServiceFactory");
 	    bean.setInitParameters(params);
 	    
 	    return bean;
