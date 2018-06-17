@@ -1,30 +1,39 @@
 package com.ghag.rnd.swagger.simple;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.google.gson.annotations.SerializedName;
 
 
 
 @Entity
-@Table(name = "Task")
+//@Table(name = "TASK")
 public class Task {
 	@Id
 	@GeneratedValue
+	@SerializedName("Id")
 	private int id;
 	
-	@Column(name = "description")
-	private String desc;
+	//@Column(name = "description")
+	@SerializedName("Description")
+	private String description;
 	
-	@Column(name = "target_date")
+	//@Column(name = "target_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	@SerializedName("TargetDate")
 	private Date targetDate;
 	
-	@Column(name = "is_done")
-	private boolean isDone;
+	//@Column(name = "is_done")
+	@SerializedName("IsDone")
+	private String isDone;
 
 	public int getId() {
 		return id;
@@ -34,12 +43,12 @@ public class Task {
 		this.id = id;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String desc) {
+		this.description = desc;
 	}
 
 	public Date getTargetDate() {
@@ -50,11 +59,11 @@ public class Task {
 		this.targetDate = targetDate;
 	}
 
-	public boolean isDone() {
+	public String getIsDone() {
 		return isDone;
 	}
 
-	public void setDone(boolean isDone) {
+	public void setIsDone(String isDone) {
 		this.isDone = isDone;
 	}
 	
